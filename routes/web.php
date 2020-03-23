@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/author', function () {
-return \App\Author::all('id','nama','email','telpon');
+Route::get('/', function () {
+return view ('welcome');
 });
 
 Route::get('/author/{id}', function ($id) {
     return \App\Author::all('id', 'nama', 'email', 'telpon')->where('id',$id);
 });
+
+Route::get('/author', function() {
+    return \App\Author::all('id','nama','telpon','email');
+});
+
+Route::get('/contoh','ContohController@Index');
+Route::get('/contoh/update/{id}','ContohController@Update');
